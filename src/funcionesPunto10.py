@@ -30,3 +30,7 @@ def recorrerLista (lista,puntajes_totales,contadorMVP):
 
         mvp = max(puntajes_ronda, key=puntajes_ronda.get)
         contadorMVP[mvp] = contadorMVP.get(mvp, 0) + 1
+
+        rankingPorRonda = sorted(puntajes_ronda.items(), key=lambda x: x[1], reverse=True)
+        for jugador, puntos in rankingPorRonda:
+            print(f"{jugador}: {puntos} puntos")
