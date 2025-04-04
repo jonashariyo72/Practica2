@@ -7,7 +7,7 @@ def imprimirRonda (lista,i):
         print (" ")
 
 
-def recorrerLista (lista,puntajes_totales):
+def recorrerLista (lista,puntajes_totales,contadorMVP):
     for i in range (5):
         puntajes_ronda = {}
         print (" ")
@@ -27,3 +27,6 @@ def recorrerLista (lista,puntajes_totales):
                 puntajes_totales[jugador]['puntos'] += puntaje
             else:
                 puntajes_totales[jugador] = {'kills': stats['kills'], 'assists': stats['assists'], 'deaths': 1 if stats['deaths'] else 0,'puntos': puntaje}
+
+        mvp = max(puntajes_ronda, key=puntajes_ronda.get)
+        contadorMVP[mvp] = contadorMVP.get(mvp, 0) + 1
