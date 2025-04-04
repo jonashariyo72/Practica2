@@ -32,5 +32,18 @@ def recorrerLista (lista,puntajes_totales,contadorMVP):
         contadorMVP[mvp] = contadorMVP.get(mvp, 0) + 1
 
         rankingPorRonda = sorted(puntajes_ronda.items(), key=lambda x: x[1], reverse=True)
+        print (" ")
+        print ("RANKING DE RONDA: ", i + 1)
+        print ("-" * 25)
         for jugador, puntos in rankingPorRonda:
             print(f"{jugador}: {puntos} puntos")
+        print ("-" * 25)
+
+def imprimirRankingFinal (puntajes_totales,contadorMVP):
+    print ("RANKING FINAL: ")
+    print (" ")
+    rankingFinal = sorted(puntajes_totales.items(), key=lambda x: x[1]['puntos'], reverse=True)
+    print("Jugador | Kills | Asistencias | Muertes | MVPs | Puntos")
+    print("-" * 55)
+    for jugador, data in rankingFinal:
+        print(f"{jugador:<7} | {data['kills']:<5} | {data['assists']:<10} | {data['deaths']:<7} | {contadorMVP.get(jugador, 0):<4} | {data['puntos']:<6}")
